@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
 @import 'config';
 @import 'utilities';
+@import 'mobile';
 
 
 html {
@@ -53,7 +54,154 @@ body {
 .top-container {
     display: grid;
     grid-gap: 20px;
-    grid-template-areas: none
+    grid-template-areas:
     'showcase showcase top-box-a'
     'showcase showcase top-box-b';
+
+    /* Showcase */
+    .showcase {
+        grid-area: showcase;
+        min-height: 400px;
+        background: url('https://source.unsplash.com/random');
+        background-size: cover;
+        background-position: center;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        box-shadow: $shadow;
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0;
+            color: $light;
+        }
+
+        p {
+            font-size: 1.3rem;
+            margin-top: 0;
+            color: $light;
+        }
+    }
+
+    /* Top Box */
+    .top-box {
+        background: $primary-color;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        box-shadow: $shadow;
+        padding: 1.5rem;
+
+        .price {
+            font-size: 2.5rem;
+        }
+    }
+
+    .top-box-a {
+        grid-area: top-box-a;
+    }
+
+    .top-box-b {
+        grid-area: top-box-b;
+    }
+}
+
+/* Boxes */
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // More responsive
+
+    .box {
+        background: $primary-color;
+        text-align: center;
+        padding: 1.5rem 2rem;
+        box-shadow: $shadow;
+    }
+}
+
+/* Info */
+.info {
+    background: $primary-color;
+    box-shadow: $shadow;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+}
+
+/* Portfolio */
+.portfolio {
+    background: $primary-color;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    img {
+        width: 100%;
+        box-shadow: $shadow;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    background: $secondary-color;
+    color: $light;
+    text-align: center;
+    padding: 1rem;
+
+}
+
+
+/* Media Queries */
+@media(max-width: 700px) {
+    .top-container {
+        grid-template-areas:
+        'showcase showcase'
+        'top-box-a top-box-b';
+
+
+        .showcase {
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+        }
+    }
+
+    .main-nav {
+
+        ul {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+        
+        img {
+            margin: auto;
+        } 
+
+        .btn {
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
+
+@media(max-width: 500px) {
+
+    .top-container {
+        grid-template-areas:
+        'showcase'
+        'top-box-a'
+        'top-box-b';
+    }
+
 }
